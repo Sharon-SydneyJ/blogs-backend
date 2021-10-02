@@ -26,4 +26,10 @@ class CommentsController < ApplicationController
     head :no_content
     end
 
+    private
+
+    def comment_params
+        params.permit(:content, :user, :blogpost)
+      end
+
 end

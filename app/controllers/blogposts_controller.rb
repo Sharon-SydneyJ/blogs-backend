@@ -28,6 +28,10 @@ class BlogpostsController < ApplicationController
         render json: { errors: invalid.record.errors }, status: :unprocessable_entity
       end
 
+      def blogpost_params
+        params.permit(:title, :content, :img_url)
+      end
+
 
 
 end
