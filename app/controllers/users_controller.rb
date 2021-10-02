@@ -14,4 +14,17 @@ class UsersController < ApplicationController
     render json: user
   end
 
+  # Post/users/:id
+def create
+    user = User.create(user_params)
+    render json: user, status: :created
+  end
+
+  private
+
+
+  def user_params
+    params.permit(:first_name, :last_name, :user_name, :email, :userid, :blogpost)
+  end
+
 end
