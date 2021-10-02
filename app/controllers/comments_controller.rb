@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
     # GET /comments/:id
         def show
@@ -27,6 +29,14 @@ class CommentsController < ApplicationController
     end
 
     private
+
+    def render_not_found_response
+        render json: { error: "User not found" }, status: :not_found
+      end
+    
+      def render_unprocessable_entity_response(invalid)
+        render json: { errors: invalid.record.errors }, status: :unprocessable_entity
+      end
 
     def comment_params
         params.permit(:content, :user, :blogpost)
