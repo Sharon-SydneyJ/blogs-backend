@@ -7,4 +7,13 @@ class BlogpostsController < ApplicationController
     render json: blogposts, include: :comments
   end
 
+  # GET /blogposts/:id
+    def show
+    blogpost = Blogpost.find_by(id: params[:id])
+      render json: blogpost, methods: [:summary], include: [:user, :comments]
+    
+    end
+
+    
+
 end
