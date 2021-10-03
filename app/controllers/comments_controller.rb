@@ -5,12 +5,12 @@ class CommentsController < ApplicationController
     # GET /comments/:id
         def show
         comment = Comment.find_by(id: params[:id])
-          render json: comment, include: [:blogpost, :user]
+          render json: comment
       end
 
       # Post/comment/:id
     def create
-        comment = Comment.create(comment_params)
+        comment = Comment.create!(comment_params)
         render json: comment, status: :created
       end
 
@@ -39,7 +39,7 @@ class CommentsController < ApplicationController
       end
 
     def comment_params
-        params.permit(:content, :user, :blogpost)
+        params.permit(:content, :user_id, :blogpost_id )
       end
 
 end

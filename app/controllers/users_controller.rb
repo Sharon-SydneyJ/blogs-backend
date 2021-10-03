@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   # GET /users/:id
     def show
     user = User.find(params[:id])
-    render json: user, serializer: UserWithBlogpostsSerializer
+    render json: user, include: ['blogposts', 'blogposts.comments']
   end
 
   # Post/users/:id
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.permit(:first_name, :last_name, :user_name, :email, :user, :blogpost)
+    params.permit(:first_name, :last_name, :user_name, :email, :blogpost, :comments)
   end
 
 end
