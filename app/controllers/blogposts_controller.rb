@@ -6,14 +6,20 @@ class BlogpostsController < ApplicationController
      # GET /blogposts
   def index
     blogposts = Blogpost.all.order(content: :desc)
-    render json: blogposts, include: :comments
+    render json: blogposts
   end
 
   # GET /blogposts/:id
     def show
         blogpost = Blogpost.find_by(id: params[:id])
-        render json: blogpost, methods: [:summary], include: [:user, :comments]
+        render json: blogpost, methods: [:summary]
     
+    end
+
+    # Post/blogposts/:id
+    def create
+      blogpost = Blogpost.create!(blogpost_params)
+      render json: blogpost, status: :created
     end
 
 
@@ -29,7 +35,7 @@ class BlogpostsController < ApplicationController
       end
 
       def blogpost_params
-        params.permit(:title, :content, :img_url)
+        params.permit(:user_id, :title, :content, :img_url)
       end
 
 

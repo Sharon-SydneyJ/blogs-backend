@@ -1,7 +1,9 @@
 class Blogpost < ApplicationRecord
-  def summary
-    "#{title}"
-  end
+
+  # scope :by_name, ->(name) { where("title LIKE ?", "%#{name}%") }
+  # def summary
+  #   "#{title}"
+  # end
   
   belongs_to :user
   has_many :comments, dependent: :destroy
