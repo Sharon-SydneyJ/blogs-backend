@@ -22,7 +22,12 @@ class BlogpostsController < ApplicationController
       render json: blogpost, status: :created
     end
 
-
+    # PUT /blogposts/:id
+    def update
+      blogpost = Blogpost.find_by(id: params[:id])
+      blogpost.update(blogpost_params)
+      render json: blogpost
+    end
 
     private
 
