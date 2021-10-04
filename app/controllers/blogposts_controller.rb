@@ -6,13 +6,13 @@ class BlogpostsController < ApplicationController
      # GET /blogposts
   def index
     blogposts = Blogpost.all.order(content: :desc)
-    render json: blogposts, include: ['comments', 'comments.user']
+    render json: blogposts
   end
 
   # GET /blogposts/:id
     def show
         blogpost = Blogpost.find_by(id: params[:id])
-        render json: blogpost, include: ['comments', 'comments.user']
+        render json: blogpost
     
     end
 
@@ -47,7 +47,7 @@ class BlogpostsController < ApplicationController
       end
 
       def blogpost_params
-        params.permit(:user_id, :title, :content, :img_url, :user, :comments)
+        params.permit(:user_id, :title, :content, :img_url, :user, :comment)
       end
 
 
