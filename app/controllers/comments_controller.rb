@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
     # GET /comments/:id
@@ -41,5 +41,6 @@ class CommentsController < ApplicationController
     def comment_params
         params.permit(:content, :user_id, :blogpost_id )
       end
+
 
 end
