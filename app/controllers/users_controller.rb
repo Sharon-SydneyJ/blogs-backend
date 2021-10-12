@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     
     # GET /users
   def index
+  
     users = User.all
     render json: users
   end
@@ -46,7 +47,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.permit(:first_name, :last_name, :user_name, :email, :blogpost, :title, :content, :img_url, :comments)
+    params.permit(:first_name, :last_name, :user_name, :email, :blogpost, :title, :content, :img_url, :comment, :remark)
   end
 
 end
