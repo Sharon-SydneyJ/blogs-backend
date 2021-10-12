@@ -2,10 +2,18 @@ class CommentsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
+
+
+            # GET /comments
+      def index
+        comments = Comment.all
+        render json: comments
+      end
+
     # GET /comments/:id
-        def show
+        def show 
         comment = Comment.find_by(id: params[:id])
-          render json: comment
+        render json: comment
       end
 
       # Post/comment/:id
@@ -39,7 +47,7 @@ class CommentsController < ApplicationController
       end
 
     def comment_params
-        params.permit(:content, :user_id, :blogpost_id )
+        params.permit(:remark, :user, :user_id, :user_name, :blogpost, :blogpost_id, :title, :content, :img_url)
       end
 
 
