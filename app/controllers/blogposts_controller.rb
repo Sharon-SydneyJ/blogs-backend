@@ -13,7 +13,6 @@ class BlogpostsController < ApplicationController
     def show
         blogpost = Blogpost.find_by(id: params[:id])
         render json: blogpost
-    
     end
 
     # Post/blogposts/:id
@@ -47,7 +46,7 @@ class BlogpostsController < ApplicationController
       end
 
       def blogpost_params
-        params.permit(:user_id, :title, :content, :img_url, :user, :comment)
+        params.permit(:user_id, :user_name, :title, :content, :img_url, :user, :comment, :remark)
       end
 
 
