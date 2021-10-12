@@ -5,8 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Comment.destroy_all
 User.destroy_all
 Blogpost.destroy_all
+
+
 puts "Seeding User"
 
     user1 = User.create!(
@@ -40,19 +43,19 @@ puts "Seeding User"
     puts "Seeding Comment"
     
     comment1 = Comment.create!(
-    {content: 'I really get what you are saying. It is true sometimes things have to fall apart to come back together. Like that song, Keep on Moving. I love that song.', blogpost_id: blogpost1.id, user_id: user4.id}
+    {remark: 'I really get what you are saying. It is true sometimes things have to fall apart to come back together. Like that song, Keep on Moving. I love that song.', user_id: user4.id, blogpost_id: blogpost1.id}
     )
     comment2 = Comment.create!(
-    {content: 'Sometimes I get tired of moving so much lol!', blogpost_id: blogpost1.id, user_id: user2.id}
+    {remark: 'Sometimes I get tired of moving so much lol!', user_id: user2.id, blogpost_id: blogpost1.id}
     )
     comment3 = Comment.create!(
-    {content: 'Sometimes you should stop and smell the roses just allow yourself to breath, smell the roses of course. And then keep going!', blogpost_id: blogpost1.id, user_id: user1.id}
+    {remark: 'Sometimes you should stop and smell the roses just allow yourself to breath, smell the roses of course. And then keep going!', user_id: user1.id, blogpost_id: blogpost1.id, }
     )
     comment4 = Comment.create!(
-    {content: 'Ugh meditating is so hard for me. I always fall asleep!', blogpost_id: blogpost2.id, user_id: user3.id}
+    {remark: 'Ugh meditating is so hard for me. I always fall asleep!', user_id: user3.id, blogpost_id: blogpost2.id}
     )
     comment = Comment.create!(
-    {content: 'I really think we are in for a hell of a Winter this year!!!', blogpost_id: blogpost4.id, user_id: user1.id}
+    {remark: 'I really think we are in for a hell of a Winter this year!!!', user_id: user1.id, blogpost_id: blogpost4.id}
     )
 
 
