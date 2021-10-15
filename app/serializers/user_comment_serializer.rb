@@ -1,6 +1,6 @@
 class UserCommentSerializer < ActiveModel::Serializer
-  attributes :id, remark
+  attributes :id, :remark
   has_many :blogposts
-  has_many :ccomments, serializer: CommentUserSerializer
+  has_many :comments, serializer: CommentUserSerializer
 
 end
